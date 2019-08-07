@@ -7,8 +7,24 @@ public class RepeatedStrings {
 
     // Complete the repeatedString function below.
     static long repeatedString(String s, long n) {
-
-
+        int originalLength = s.length();
+        int originalStringACount = 0;
+        long finalACount = 0;
+        for (int i = 0; i < originalLength; i++) {
+            if (s.charAt(i) == 'a') {
+                originalStringACount++;
+            }
+        }
+        finalACount = (n / originalLength) * originalStringACount;
+        long remainingCharactersLength = n % originalLength;
+        if (remainingCharactersLength != 0) {
+            for (int i = 0; i < remainingCharactersLength; i++) {
+                if (s.charAt(i) == 'a') {
+                    finalACount++;
+                }
+            }
+        }
+        return finalACount;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
